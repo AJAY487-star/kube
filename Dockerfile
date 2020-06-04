@@ -11,7 +11,7 @@ RUN mkdir /root/jenkins
 RUN mkdir /root/.kube
 COPY client.key /root/
 COPY ca.crt /root/
-COPY client.key /root/
+COPY client.crt /root/
 COPY config /root/.kube
 COPY deployment.yml /root/
 CMD [ "/usr/sbin/sshd" , "D" ] && /bin/bash
