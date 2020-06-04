@@ -12,7 +12,7 @@ RUN mkdir /root/.kube
 COPY client.key /root/
 COPY ca.crt /root/
 COPY client.key /root/
-COPY myinfo /root/.kube
+COPY config /root/.kube
 COPY deployment.yml /root/
 CMD [ "/usr/sbin/sshd" , "D" ] && /bin/bash
 CMD /bin/bash
