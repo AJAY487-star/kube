@@ -3,15 +3,17 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s 
 
 RUN chmod +x kubectl
 RUN mv kubectl /usr/bin/
+RUN yum install clear -y
 RUN yum install java -y
 RUN yum install sudo -y
 RUN yum install openssh-server -y
 RUN ssh-keygen -A
 RUN mkdir /root/jenkins
+RUN mkdir /root/.kube
 COPY client.key /root/
 COPY ca.crt /root/
 COPY client.key /root/
-COPY myinfo /root/.kube/config
+COPY myinfo /root/.kube
 COPY deployment.yml /root/
-CMD [ "/usr/sbin/sshd" , "D" ] 
+CMD [ "/usr/sbin/sshd" , "D" ] && /bin/bash
 CMD /bin/bash
