@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: myweb-dep
+spec:
+ replicas: 4
+ selector:
+  matchLabels:
+   env: web
+ template:
+  metadata:
+   name: myweb-pod
+   labels:
+    env: web
+  spec:
+   containers:
+   - name: myweb-con
+     image: ajaykumar13/phpweb:v1
